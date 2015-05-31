@@ -1,0 +1,212 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wave_config>
+   <wave_state>
+   </wave_state>
+   <db_ref_list>
+      <db_ref path="E:/source/altera/kc87/boards/s3/KC87/kc87_tb_isim_beh.wdb" id="1" type="auto">
+         <top_modules>
+            <top_module name="kc87_tb" />
+            <top_module name="numeric_std" />
+            <top_module name="std_logic_1164" />
+            <top_module name="t80_pack" />
+            <top_module name="textio" />
+            <top_module name="vcomponents" />
+            <top_module name="vital_primitives" />
+            <top_module name="vital_timing" />
+            <top_module name="vpkg" />
+         </top_modules>
+      </db_ref>
+   </db_ref_list>
+   <WVObjectSize size="46" />
+   <wvobject fp_name="/kc87_tb/clock_50" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">clock_50</obj_property>
+      <obj_property name="ObjectShortName">clock_50</obj_property>
+   </wvobject>
+   <wvobject fp_name="/kc87_tb/uart_rxd" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">uart_rxd</obj_property>
+      <obj_property name="ObjectShortName">uart_rxd</obj_property>
+   </wvobject>
+   <wvobject fp_name="/kc87_tb/key" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">key[3:0]</obj_property>
+      <obj_property name="ObjectShortName">key[3:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/kc87_tb/sw" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">sw[7:0]</obj_property>
+      <obj_property name="ObjectShortName">sw[7:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/kc87_tb/sd_dat" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">sd_dat</obj_property>
+      <obj_property name="ObjectShortName">sd_dat</obj_property>
+   </wvobject>
+   <wvobject fp_name="/kc87_tb/sram_dq" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">sram_dq[15:0]</obj_property>
+      <obj_property name="ObjectShortName">sram_dq[15:0]</obj_property>
+      <obj_property name="Radix">HEXRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/kc87_tb/ps2_clk" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">ps2_clk</obj_property>
+      <obj_property name="ObjectShortName">ps2_clk</obj_property>
+   </wvobject>
+   <wvobject fp_name="/kc87_tb/ps2_dat" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">ps2_dat</obj_property>
+      <obj_property name="ObjectShortName">ps2_dat</obj_property>
+   </wvobject>
+   <wvobject fp_name="/kc87_tb/vga_r" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">vga_r</obj_property>
+      <obj_property name="ObjectShortName">vga_r</obj_property>
+   </wvobject>
+   <wvobject fp_name="/kc87_tb/vga_g" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">vga_g</obj_property>
+      <obj_property name="ObjectShortName">vga_g</obj_property>
+   </wvobject>
+   <wvobject fp_name="/kc87_tb/vga_b" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">vga_b</obj_property>
+      <obj_property name="ObjectShortName">vga_b</obj_property>
+   </wvobject>
+   <wvobject fp_name="/kc87_tb/vga_hs" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">vga_hs</obj_property>
+      <obj_property name="ObjectShortName">vga_hs</obj_property>
+   </wvobject>
+   <wvobject fp_name="/kc87_tb/vga_vs" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">vga_vs</obj_property>
+      <obj_property name="ObjectShortName">vga_vs</obj_property>
+   </wvobject>
+   <wvobject fp_name="/kc87_tb/sram_addr" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">sram_addr[17:0]</obj_property>
+      <obj_property name="ObjectShortName">sram_addr[17:0]</obj_property>
+      <obj_property name="Radix">HEXRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/kc87_tb/sram_oe_n" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">sram_oe_n</obj_property>
+      <obj_property name="ObjectShortName">sram_oe_n</obj_property>
+   </wvobject>
+   <wvobject fp_name="/kc87_tb/sram_ce_n" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">sram_ce_n</obj_property>
+      <obj_property name="ObjectShortName">sram_ce_n</obj_property>
+   </wvobject>
+   <wvobject fp_name="/kc87_tb/sram_we_n" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">sram_we_n</obj_property>
+      <obj_property name="ObjectShortName">sram_we_n</obj_property>
+   </wvobject>
+   <wvobject fp_name="/kc87_tb/sram_lb_n" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">sram_lb_n</obj_property>
+      <obj_property name="ObjectShortName">sram_lb_n</obj_property>
+   </wvobject>
+   <wvobject fp_name="/kc87_tb/sram_ub_n" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">sram_ub_n</obj_property>
+      <obj_property name="ObjectShortName">sram_ub_n</obj_property>
+   </wvobject>
+   <wvobject fp_name="/kc87_tb/uart_txd" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">uart_txd</obj_property>
+      <obj_property name="ObjectShortName">uart_txd</obj_property>
+   </wvobject>
+   <wvobject fp_name="/kc87_tb/ledr" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">ledr[7:0]</obj_property>
+      <obj_property name="ObjectShortName">ledr[7:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/kc87_tb/hex" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">hex[6:0]</obj_property>
+      <obj_property name="ObjectShortName">hex[6:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/kc87_tb/hex_an" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">hex_an[3:0]</obj_property>
+      <obj_property name="ObjectShortName">hex_an[3:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/kc87_tb/sd_dat3" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">sd_dat3</obj_property>
+      <obj_property name="ObjectShortName">sd_dat3</obj_property>
+   </wvobject>
+   <wvobject fp_name="/kc87_tb/sd_cmd" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">sd_cmd</obj_property>
+      <obj_property name="ObjectShortName">sd_cmd</obj_property>
+   </wvobject>
+   <wvobject fp_name="/kc87_tb/sd_clk" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">sd_clk</obj_property>
+      <obj_property name="ObjectShortName">sd_clk</obj_property>
+   </wvobject>
+   <wvobject fp_name="/kc87_tb/gpio_1" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">gpio_1[9:0]</obj_property>
+      <obj_property name="ObjectShortName">gpio_1[9:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/kc87_tb/clock_50_period" type="other" db_ref_id="1">
+      <obj_property name="ElementShortName">clock_50_period</obj_property>
+      <obj_property name="ObjectShortName">clock_50_period</obj_property>
+   </wvobject>
+   <wvobject fp_name="/kc87_tb/uut/reset_n" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">reset_n</obj_property>
+      <obj_property name="ObjectShortName">reset_n</obj_property>
+   </wvobject>
+   <wvobject fp_name="/kc87_tb/uut/resetint" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">resetint</obj_property>
+      <obj_property name="ObjectShortName">resetint</obj_property>
+   </wvobject>
+   <wvobject fp_name="/kc87_tb/uut/inst_clock/inclk0" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">inclk0</obj_property>
+      <obj_property name="ObjectShortName">inclk0</obj_property>
+   </wvobject>
+   <wvobject fp_name="/kc87_tb/uut/inst_clock/c0" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">c0</obj_property>
+      <obj_property name="ObjectShortName">c0</obj_property>
+   </wvobject>
+   <wvobject fp_name="/kc87_tb/uut/inst_clock/c1" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">c1</obj_property>
+      <obj_property name="ObjectShortName">c1</obj_property>
+   </wvobject>
+   <wvobject fp_name="/kc87_tb/uut/inst_clock/locked" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">locked</obj_property>
+      <obj_property name="ObjectShortName">locked</obj_property>
+   </wvobject>
+   <wvobject fp_name="/kc87_tb/uut/cpu/a" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">a[15:0]</obj_property>
+      <obj_property name="ObjectShortName">a[15:0]</obj_property>
+      <obj_property name="Radix">HEXRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/kc87_tb/uut/cpu/di" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">di[7:0]</obj_property>
+      <obj_property name="ObjectShortName">di[7:0]</obj_property>
+      <obj_property name="Radix">HEXRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/kc87_tb/uut/cpu/clk_n" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">clk_n</obj_property>
+      <obj_property name="ObjectShortName">clk_n</obj_property>
+   </wvobject>
+   <wvobject fp_name="/kc87_tb/uut/cpu/rd_n" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">rd_n</obj_property>
+      <obj_property name="ObjectShortName">rd_n</obj_property>
+   </wvobject>
+   <wvobject fp_name="/kc87_tb/uut/cpu/wr_n" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">wr_n</obj_property>
+      <obj_property name="ObjectShortName">wr_n</obj_property>
+   </wvobject>
+   <wvobject fp_name="/kc87_tb/uut/cpu/mreq_n" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">mreq_n</obj_property>
+      <obj_property name="ObjectShortName">mreq_n</obj_property>
+   </wvobject>
+   <wvobject fp_name="/kc87_tb/uut/cpu/iorq_n" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">iorq_n</obj_property>
+      <obj_property name="ObjectShortName">iorq_n</obj_property>
+   </wvobject>
+   <wvobject fp_name="/kc87_tb/uut/cpu/rfsh_n" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">rfsh_n</obj_property>
+      <obj_property name="ObjectShortName">rfsh_n</obj_property>
+   </wvobject>
+   <wvobject fp_name="/kc87_tb/uut/cpu/do" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">do[7:0]</obj_property>
+      <obj_property name="ObjectShortName">do[7:0]</obj_property>
+      <obj_property name="Radix">HEXRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/kc87_tb/uut/cpu/clken" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">clken</obj_property>
+      <obj_property name="ObjectShortName">clken</obj_property>
+   </wvobject>
+   <wvobject fp_name="/kc87_tb/uut/cram/din1" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">din1[7:0]</obj_property>
+      <obj_property name="ObjectShortName">din1[7:0]</obj_property>
+      <obj_property name="Radix">HEXRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/kc87_tb/uut/cram/dout1" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">dout1[7:0]</obj_property>
+      <obj_property name="ObjectShortName">dout1[7:0]</obj_property>
+      <obj_property name="Radix">HEXRADIX</obj_property>
+   </wvobject>
+</wave_config>
