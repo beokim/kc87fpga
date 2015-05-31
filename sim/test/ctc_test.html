@@ -1,0 +1,127 @@
+<html>
+<head>
+</head>
+<body>
+<pre><code>
+<a name="L0000"></a>0000: C3 10 00         	 	JP	<a	href="#L0010">L0010</a></a>
+
+<a name="L0003"></a>0003: 00               	 L0003:	NOP</a>
+<a name="L0004"></a>0004: 00               	 	NOP</a>
+<a name="L0005"></a>0005: 00               	 	NOP</a>
+<a name="L0006"></a>0006: 00               	 	NOP</a>
+<a name="L0007"></a>0007: 00               	 	NOP</a>
+<a name="L0008"></a>0008: 40               	 	LD	B,B</a>
+<a name="L0009"></a>0009: 00               	 	NOP</a>
+<a name="L000A"></a>000A: 4B               	 	LD	C,E</a>
+<a name="L000B"></a>000B: 00               	 	NOP</a>
+<a name="L000C"></a>000C: 56               	 	LD	D,(HL)</a>
+<a name="L000D"></a>000D: 00               	 	NOP</a>
+<a name="L000E"></a>000E: 61               	 	LD	H,C</a>
+<a name="L000F"></a>000F: 00               	 	NOP</a>
+<a name="L0010"></a>0010: 31 00 42         	 L0010:	LD	SP,4200h</a>
+<a name="L0013"></a>0013: 3E 00            	 	LD	A,00h</a>
+<a name="L0015"></a>0015: ED 47            	 	LD	I,A</a>
+<a name="L0017"></a>0017: ED 5E            	 	IM	2</a>
+<a name="L0019"></a>0019: 3E 08            	 	LD	A,08h</a>
+<a name="L001B"></a>001B: D3 80            	 	OUT	(80h),A</a>
+<a name="L001D"></a>001D: 3E 97            	 	LD	A,97h</a>
+<a name="L001F"></a>001F: D3 80            	 	OUT	(80h),A</a>
+<a name="L0021"></a>0021: D3 81            	 	OUT	(81h),A</a>
+<a name="L0023"></a>0023: D3 82            	 	OUT	(82h),A</a>
+<a name="L0025"></a>0025: D3 83            	 	OUT	(83h),A</a>
+<a name="L0027"></a>0027: 3E 02            	 	LD	A,02h</a>
+<a name="L0029"></a>0029: D3 80            	 	OUT	(80h),A</a>
+<a name="L002B"></a>002B: 3C               	 	INC	A</a>
+<a name="L002C"></a>002C: D3 81            	 	OUT	(81h),A</a>
+<a name="L002E"></a>002E: 3C               	 	INC	A</a>
+<a name="L002F"></a>002F: D3 82            	 	OUT	(82h),A</a>
+<a name="L0031"></a>0031: 3C               	 	INC	A</a>
+<a name="L0032"></a>0032: D3 83            	 	OUT	(83h),A</a>
+<a name="L0034"></a>0034: FB               	 	EI</a>
+<a name="L0035"></a>0035: 21 08 40         	 	LD	HL,4008h</a>
+<a name="L0038"></a>0038: ED 73 0A 40      	 L0038:	LD	(400Ah),SP</a>
+<a name="L003C"></a>003C: 34               	 	INC	(HL)</a>
+<a name="L003D"></a>003D: C3 38 00         	 	JP	<a	href="#L0038">L0038</a></a>
+
+<a name="L0040"></a>0040: F5               	 L0040:	PUSH	AF</a>
+<a name="L0041"></a>0041: E5               	 	PUSH	HL</a>
+<a name="L0042"></a>0042: 21 00 40         	 	LD	HL,4000h</a>
+<a name="L0045"></a>0045: 34               	 	INC	(HL)</a>
+<a name="L0046"></a>0046: E1               	 	POP	HL</a>
+<a name="L0047"></a>0047: F1               	 	POP	AF</a>
+<a name="L0048"></a>0048: FB               	 	EI</a>
+<a name="L0049"></a>0049: ED 4D            	 	RETI</a>
+
+<a name="L004B"></a>004B: F5               	 L004B:	PUSH	AF</a>
+<a name="L004C"></a>004C: E5               	 	PUSH	HL</a>
+<a name="L004D"></a>004D: 21 02 40         	 	LD	HL,4002h</a>
+<a name="L0050"></a>0050: 34               	 	INC	(HL)</a>
+<a name="L0051"></a>0051: E1               	 	POP	HL</a>
+<a name="L0052"></a>0052: F1               	 	POP	AF</a>
+<a name="L0053"></a>0053: FB               	 	EI</a>
+<a name="L0054"></a>0054: ED 4D            	 	RETI</a>
+
+<a name="L0056"></a>0056: F5               	 L0056:	PUSH	AF</a>
+<a name="L0057"></a>0057: E5               	 	PUSH	HL</a>
+<a name="L0058"></a>0058: 21 04 40         	 	LD	HL,4004h</a>
+<a name="L005B"></a>005B: 34               	 	INC	(HL)</a>
+<a name="L005C"></a>005C: E1               	 	POP	HL</a>
+<a name="L005D"></a>005D: F1               	 	POP	AF</a>
+<a name="L005E"></a>005E: FB               	 	EI</a>
+<a name="L005F"></a>005F: ED 4D            	 	RETI</a>
+
+<a name="L0061"></a>0061: F5               	 L0061:	PUSH	AF</a>
+<a name="L0062"></a>0062: E5               	 	PUSH	HL</a>
+<a name="L0063"></a>0063: 21 06 40         	 	LD	HL,4006h</a>
+<a name="L0066"></a>0066: 34               	 	INC	(HL)</a>
+<a name="L0067"></a>0067: E1               	 	POP	HL</a>
+<a name="L0068"></a>0068: F1               	 	POP	AF</a>
+<a name="L0069"></a>0069: FB               	 	EI</a>
+<a name="L006A"></a>006A: ED 4D            	 	RETI</a>
+
+
+references to external address 400Ah:
+	<a href="#L0038">0038</a> LD (400Ah),SP
+
+possible references to external address 4000h:
+	<a href="#L0042">0042</a> LD HL,4000h
+
+possible references to external address 4002h:
+	<a href="#L004D">004D</a> LD HL,4002h
+
+possible references to external address 4004h:
+	<a href="#L0058">0058</a> LD HL,4004h
+
+possible references to external address 4006h:
+	<a href="#L0063">0063</a> LD HL,4006h
+
+possible references to external address 4008h:
+	<a href="#L0035">0035</a> LD HL,4008h
+
+possible references to external address 4200h:
+	<a href="#L0010">0010</a> LD SP,4200h
+
+references to port 80h
+	<a href="#L001B">001B</a> OUT (80h),A
+	<a href="#L001F">001F</a> OUT (80h),A
+	<a href="#L0029">0029</a> OUT (80h),A
+
+references to port 81h
+	<a href="#L0021">0021</a> OUT (81h),A
+	<a href="#L002C">002C</a> OUT (81h),A
+
+references to port 82h
+	<a href="#L0023">0023</a> OUT (82h),A
+	<a href="#L002F">002F</a> OUT (82h),A
+
+references to port 83h
+	<a href="#L0025">0025</a> OUT (83h),A
+	<a href="#L0032">0032</a> OUT (83h),A
+
+Procedures (0):
+  Proc  Length  References Dependants
+
+Call Graph:
+</code></pre>
+</body>
+</head>

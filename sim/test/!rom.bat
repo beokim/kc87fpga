@@ -1,0 +1,1 @@
+\cygwin64\bin\tclsh8.5.exe bin2vhdl.tcl ctc_test.bin os_ctc >ctc_test.vhd
