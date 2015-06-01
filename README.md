@@ -2,7 +2,7 @@
 
 This is a recreation of a KC87 using VHDL. It is designed to run on a Terasic DE1 FPGA Board. The computer 
 itself is a member of a line of home computers from former East Germany that was fairly popular. 
-They were all based on the Z80 and it's periperials.
+They were all based on the Z80 and its periperials.
 
 See http://en.wikipedia.org/wiki/Robotron_KC_87
 
