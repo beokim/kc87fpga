@@ -85,7 +85,7 @@ benötigt:
 - Z80asm (Z80 Assebler)
 - TCL (Umwandlung bin -> VHDL)
 
-Eim
+Ein
 
 ```
 make sdrom
