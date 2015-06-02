@@ -390,8 +390,8 @@ void main(void) {
     }
 
     // kurze beschreibung
-    kcPrint("* Cursortasten: Navigation\n* Enter: Auswahl\n* Space: Information\n");
-    kcPrint("* Backspace: Verzeichnis hoch\n* Esc: verlassen\n* B: Basic-Programm starten\n");
+    kcPrint("\n* Cursortasten: Navigation\n* Enter: Auswahl\n* Space: Information");
+    kcPrint("\n* Backspace: Verzeichnis hoch\n* Esc: verlassen\n* B: Basic-Programm starten\n");
         
 //    memPtr = (char*) &memPtr;
     while (1) {
