@@ -30,7 +30,7 @@ For this reason i will continue in german.
 
 ### Video
 - 40x24 Textmodus (40x20 Modus fehlt)
-- 640x768 (mit Timing für 1024x768)
+- Ausgabe 640x768@60Hz (Timing entspricht 1024x768@60Hz)
 - Scanlines zuschaltbar
 
 ### Keyboard
@@ -39,15 +39,15 @@ For this reason i will continue in german.
 - Tasten werden so gemappt 
 
 ### SD Karte
-- OS und Basic werden beim
-- tap-Files können von Karte geladen werden
+- OS und Basic werden vom Bootrom eingelesen und gestartet
+- von der Karte können tap-Files geladen werden
 
 ## Bedienung
 Nach dem Start wird der Bootloader zunächst nach $8000 entpackt und gestartet. Anschließend sucht er auf der SD Karte 
 nach dem OS und dem Basic Rom. Findet er sie dann werden sie geladen und das OS wird gestartet. Der Bootloader sucht 
 nach os____f0.87b und basic_c0.87b im Verzeichnis ROMS.
 
-Das Rom kann auch tap-Files laden. Nach der Eingabe von 
+Das Rom ist auch während des normalen Betriebs verfügbar. Nach Eingabe von
 
 ```
 SD 
@@ -102,7 +102,8 @@ Sinnvoll benutzbare Varianten:
 - bootloader_sdcard.vhd (Bootloader für SD Karte)
 
 ## ToDos
-- fehlenden Videomodus (40x20) ergänzen 
+- fehlenden Videomodus (40x20) ergänzen
+- der Speicherzugriff hat keine Waitstates - deswegen vermutlich etwas zu schnell
 - verbesserter Interruptcontroller der laufende Interrupts unterbrechen kann
 - Grafikerweiterung?
 - Sound (Krach?) ausgeben
