@@ -245,12 +245,16 @@ begin
   
 --      LEDR(7 downto 0) <= test2;
 
-    LEDR(7 downto 0) <= ledbuff;
+--    LEDR(7 downto 0) <= ledbuff;
+    LEDR(7 downto 0) <= kmatrixYout;
     LEDR(9 downto 8) <= (others => '0');
     
 --    LEDR(9 downto 6) <= ctcTcTo;
-    LEDG(0) <= not int_SD_DAT3;
-    LEDG(7 downto 1) <= sysctl_d(6 downto 0);
+
+    LEDG <= kmatrixXout;
+
+--    LEDG(0) <= not int_SD_DAT3;
+--    LEDG(7 downto 1) <= sysctl_d(6 downto 0);
     
     -- interrupt-vektoren und letzten angesprungenen interrupt merken
     process
@@ -402,14 +406,14 @@ begin
     intController : entity work.intController
     port map (
         clk         => clk,
-        res         => resetInt,
-        int         => int_n,
+        res_n       => resetInt,
+        int_n       => int_n,
         intPeriph   => intPeriph,
         intAck      => intAckPeriph,
         cpuDIn      => cpu_di,
-        m1          => m1_n,
-        iorq        => iorq_n,
-        rd          => rd_n,
+        m1_n        => m1_n,
+        iorq_n      => iorq_n,
+        rd_n        => rd_n,
         RETI_n      => RETI_n
     );
     
@@ -427,9 +431,9 @@ begin
             dOut    => ctc_d,
             
             cs      => cpu_addr(1 downto 0),
-            m1      => m1_n,
-            iorq    => iorq_n,
-            rd      => rd_n,
+            m1_n    => m1_n,
+            iorq_n  => iorq_n,
+            rd_n    => rd_n,
             
             int     => intPeriph(3 downto 0),
             intAck  => intAckPeriph(3 downto 0),
@@ -438,7 +442,7 @@ begin
             kcSysClk => kcSysClk
         );
     
-    -- ctc-aus und eingänge verdrahten
+    -- ctc-aus und eingÃ¤nge verdrahten
     ctcClkTrg(2 downto 0) <= (others => '0');
     ctcClkTrg(3) <= ctcTcTo(2);
     
@@ -452,10 +456,10 @@ begin
             dOut  => pio1_d,
             baSel => cpu_addr(0),
             cdSel => cpu_addr(1),
-            ce    => pio1_cs_n,
-            m1    => m1_n,
-            iorq  => iorq_n,
-            rd    => rd_n,
+            cs_n  => pio1_cs_n,
+            m1_n  => m1_n,
+            iorq_n => iorq_n,
+            rd_n  => rd_n,
             intAck => intAckPeriph(5 downto 4),
             int   => intPeriph(5 downto 4),
             aIn   => pio1_aIn,
@@ -483,10 +487,10 @@ begin
             dOut  => pio2_d,
             baSel => cpu_addr(0),
             cdSel => cpu_addr(1),
-            ce    => pio2_cs_n,
-            m1    => m1_n,
-            iorq  => iorq_n,
-            rd    => rd_n,
+            cs_n  => pio2_cs_n,
+            m1_n  => m1_n,
+            iorq_n => iorq_n,
+            rd_n  => rd_n,
             intAck => intAckPeriph(7 downto 6),
             int   => intPeriph(7 downto 6),
             aIn   => kmatrixXout,
@@ -532,7 +536,7 @@ begin
     SRAM_UB_N <= '1';
     SRAM_LB_N <= '0';
       
-    process -- DQ einen halben takt verzögern (ansonsten SRAM-Timingproblem wegen zu kurzem WR)
+    process -- DQ einen halben takt verzÃ¶gern (ansonsten SRAM-Timingproblem wegen zu kurzem WR)
     begin
       wait until falling_edge(clk);
       

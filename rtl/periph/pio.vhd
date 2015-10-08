@@ -36,10 +36,10 @@ entity pio is
         dOut  : out std_logic_vector(7 downto 0);
         baSel : in std_logic;
         cdSel : in std_logic;
-        ce    : in std_logic;
-        m1    : in std_logic;
-        iorq  : in std_logic;
-        rd    : in std_logic;
+        cs_n  : in std_logic;
+        m1_n  : in std_logic;
+        iorq_n : in std_logic;
+        rd_n  : in std_logic;
 
         int   : out std_logic_vector(1 downto 0);
         intAck : in std_logic_vector(1 downto 0);
@@ -68,8 +68,8 @@ architecture rtl of pio is
     signal pioStb   : std_logic_vector(1 downto 0);
 
 begin
-    pioEn(0) <= '1' when baSel='0' and ce='0' and en='1' else '0';
-    pioEn(1) <= '1' when baSel='1' and ce='0' and en='1' else '0';
+    pioEn(0) <= '1' when baSel='0' and cs_n='0' and en='1' else '0';
+    pioEn(1) <= '1' when baSel='1' and cs_n='0' and en='1' else '0';
     
     -- connect ports internal
     pioPortIn(0) <= aIn;
@@ -82,7 +82,7 @@ begin
     bRdy <= pioRdy(1);
     pioStb(1) <= bStb;
     
-    dOut <= pioDataOut(0) when ((baSel='0' and rd='0') or (intAck(0)='1')) else pioDataOut(1);
+    dOut <= pioDataOut(0) when ((baSel='0' and rd_n='0') or (intAck(0)='1')) else pioDataOut(1);
 
     -- create 2 ports
     ports: for i in 0 to 1 generate
@@ -94,9 +94,9 @@ begin
           dIn   => dIn,
           dOut  => pioDataOut(i),
           cdSel => cdSel,
-          m1    => m1,
-          iorq  => iorq,
-          rd    => rd,
+          m1_n  => m1_n,
+          iorq_n => iorq_n,
+          rd_n  => rd_n,
           int   => int(i),
           intAck => intAck(i),
           pIn   => pioPortIn(i),

@@ -28,9 +28,6 @@ use IEEE.std_logic_1164.all;
 use IEEE.numeric_std.all; 
 
 entity pio_port is
-    generic (
-        portA : boolean := true
-    );
     port (
         clk   : in std_logic;
         res_n : in std_logic;
@@ -40,9 +37,9 @@ entity pio_port is
         dOut  : out std_logic_vector(7 downto 0);
         
         cdSel : in std_logic;
-        m1    : in std_logic;
-        iorq  : in std_logic;
-        rd    : in std_logic;
+        m1_n  : in std_logic;
+        iorq_n : in std_logic;
+        rd_n  : in std_logic;
 
         int   : out std_logic;
         intAck : in std_logic;
@@ -159,10 +156,10 @@ begin
         elsif (intAck='1') then
 --            dOut <= irqVect & '0';
         elsif (en='1') then
-            if (iorq='0' and m1='1') then
+            if (iorq_n='0' and m1_n='1') then
                 -- Data ?
                 if (cdSel='0') then
-                    if (rd='1') then
+                    if (rd_n='1') then
                         -- write
                         case mode is
                             when "00" => intPOut <= dIn;  -- Mode 0 (output)
@@ -175,7 +172,7 @@ begin
                     end if;
                 else
                     -- Control ?
-                    if (rd='1') then
+                    if (rd_n='1') then
                         -- write
                         nextState <= default;
 

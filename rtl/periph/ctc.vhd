@@ -40,9 +40,9 @@ entity ctc is
         dOut  : out std_logic_vector(7 downto 0);
         
         cs    : in std_logic_vector(1 downto 0);
-        m1    : in std_logic; -- negative
-        iorq  : in std_logic; -- negative
-        rd    : in std_logic; -- negative
+        m1_n  : in std_logic; -- negative
+        iorq_n : in std_logic; -- negative
+        rd_n  : in std_logic; -- negative
         
         int   : out std_logic_vector(3 downto 0);
         intAck : in std_logic_vector(3 downto 0);
@@ -79,9 +79,9 @@ begin
     
     dOut <= 
         irqVect & intAckChannel & "0" when intAck/="0000" else -- int acknowledge
-        cDOut(0) when cEn(0)='0' else
-        cDOut(1) when cEn(1)='0' else
-        cDOut(2) when cEn(2)='0' else
+        cDOut(0) when cEn(0)='1' else
+        cDOut(1) when cEn(1)='1' else
+        cDOut(2) when cEn(2)='1' else
         cDOut(3);
 
     setTC <= 
@@ -108,7 +108,7 @@ begin
     begin
         wait until rising_edge(clk);
 
-        if (en='0' and rd='1' and iorq='0' and m1='1' and dIn(0)='0' and setTC='0') then -- set irq vector
+        if (en='0' and rd_n='1' and iorq_n='0' and m1_n='1' and dIn(0)='0' and setTC='0') then -- set irq vector
             irqVect <= dIn(7 downto 3);
         end if;
     end process;
@@ -119,11 +119,12 @@ begin
             clk     => clk,
             res_n   => res_n,
             en      => cEn(i),
+            
             dIn     => dIn,
             dOut    => cDOut(i),
-            m1      => m1,
-            iorq    => iorq,
-            rd      => rd,
+            
+            rd_n    => rd_n,
+            
             int     => int(i),
             setTC   => cSetTC(i),
             ctcClkEn => ctcClkEn,
@@ -131,6 +132,6 @@ begin
             zc_to    => zc_to(i)
         );
             
-        cEn(i) <= '1' when (en='0' and iorq='0' and m1='1' and to_integer(unsigned(cs))=i) else '0';
+        cEn(i) <= '1' when (en='0' and iorq_n='0' and m1_n='1' and to_integer(unsigned(cs))=i) else '0';
     end generate;
 end;

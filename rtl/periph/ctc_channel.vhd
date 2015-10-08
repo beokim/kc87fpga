@@ -35,9 +35,7 @@ entity ctc_channel is
         dIn   : in std_logic_vector(7 downto 0);
         dOut  : out std_logic_vector(7 downto 0);
         
-        m1    : in std_logic;
-        iorq  : in std_logic;
-        rd    : in std_logic;
+        rd_n  : in std_logic;
         
         int   : out std_logic;
         setTC : out std_logic;
@@ -70,7 +68,7 @@ begin
     setTC <= '1' when state=setTimeConstant else '0';
     dOut <= std_logic_vector(to_unsigned(dCounter, dOut'length)); -- CTC Read
     
-    int <= '1' when triggerIrq and control(7)='1' else '0'; -- channel interupt enabled?
+    int <= '1' when triggerIrq and control(7)='1' else '0'; 
     
 --    zc_to <= '1' when control(7)='1' else '0';
 --    zc_to <= edgeDet(1);
@@ -83,7 +81,6 @@ begin
     begin
         wait until rising_edge(clk);
         
-        -- pre-divider
         if (ctcClkEn='1') then
             if (preDivider=255) then
                 preDivider <= 0;
@@ -105,9 +102,7 @@ begin
         triggerIrq <= false;
         cntrEvent := false;
         
-        zc_to <= '0';
-        
-        if (running) then -- let's count
+        if (running) then
             if (edgeDet="01") then
                 cntrEvent := true;
             end if;
@@ -122,6 +117,7 @@ begin
                     zc_to <= '1';
                 else
                     dCounter <= dCounter - 1;
+                    zc_to <= '0';
                 end if;
             end if;
         else
@@ -130,6 +126,7 @@ begin
             dCounter <= 0;
             preDivider <= 0;
             triggerIrq <= false;
+            zc_to <= '0';
         end if;
     end process;
     
@@ -144,7 +141,7 @@ begin
             running <= false;
             timeConstant <= 256;
         elsif (en='1') then
-            if (rd='1') then -- CTC Write
+            if (rd_n='1') then -- CTC Write
                 if (state=setTimeConstant) then -- set Time Constant 
                     nextState <= default;
                     running <= true;

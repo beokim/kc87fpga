@@ -148,7 +148,7 @@ begin
     end process;
     
     -- color+output
-    process (display, output, color)
+    process (display, output, color, countV, scanLine)
     begin
         if (display and not(countV mod (CHAR_Y_SIZE/8) = 0 and scanLine='0')) then
             if (output(7)='1') then

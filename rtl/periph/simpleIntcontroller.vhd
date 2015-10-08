@@ -34,14 +34,14 @@ entity intController is
     );
     port (
         clk     : in std_logic;
-        res     : in std_logic;
-        int     : out std_logic;
+        res_n   : in std_logic;
+        int_n   : out std_logic;
         intPeriph : in std_logic_vector(numInts-1 downto 0);
         intAck  : out std_logic_vector(numInts-1 downto 0);
         cpuDIn  : in std_logic_vector(7 downto 0);
-        m1      : in std_logic;
-        iorq    : in std_logic;
-        rd      : in std_logic;
+        m1_n    : in std_logic;
+        iorq_n  : in std_logic;
+        rd_n    : in std_logic;
         RETI_n  : in std_logic
     );
 end intController;
@@ -56,7 +56,7 @@ architecture rtl of intController is
     type controllerStates is (idle, intAccepted, waitForRetiEnd, waitForM1, finishInt);
     signal state         : controllerStates := idle;
 begin
-    intAck <= currentInt when m1='0' and iorq='0' else (others => '0');
+    intAck <= currentInt when m1_n='0' and iorq_n='0' else (others => '0');
   
     -- determine int with highest priority
     int_mask : process(intInternal)
@@ -77,17 +77,17 @@ begin
     begin
         wait until rising_edge(clk);
     
-        if (res='0') then
+        if (res_n='0') then
             state <= idle;
-            int <= '1';
+            int_n <= '1';
             currentInt <= (others => '0');
             intInternal <= (others => '0');
         else
             intResetMask := (others => '1');
             
-            if (m1='1') then
+            if (m1_n='1') then
                 if intMask /= zeroVect and state=idle then -- new int + update to higher prio until int ack
-                    int <= '0';
+                    int_n <= '0';
                     currentInt <= intMask;
                 end if;
                 
@@ -104,9 +104,9 @@ begin
                     state <= finishInt;
                 end if;
                 
-                if iorq='0' then -- int ack
+                if iorq_n='0' then -- int ack
                     state <= intAccepted;
-                    int <= '1';
+                    int_n <= '1';
                     intResetMask := not currentInt; -- reset current int
                 end if;
             end if;
