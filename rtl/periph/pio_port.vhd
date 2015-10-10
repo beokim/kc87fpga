@@ -60,46 +60,55 @@ architecture rtl of pio_port is
     signal irqCtrl  : std_logic_vector(2 downto 0) := (others => '0');
     signal irqMask  : std_logic_vector(7 downto 0) := (others => '1');
     signal irqVect  : std_logic_vector(6 downto 0) := (others => '0');
-    signal portMask : std_logic_vector(7 downto 0) := (others => '1');
+    signal portMask : std_logic_vector(7 downto 0) := (others => '1'); -- 1=input / 0=output
     signal irqCond  : std_logic_vector(1 downto 0) := (others => '0');
-    signal intIeo   : std_logic :='1';
+    
     signal serviced : std_logic;
-    signal intPOut  : std_logic_vector(7 downto 0);
+    
+    signal pOutReg  : std_logic_vector(7 downto 0);
+    
     signal stbDebounce : std_logic_vector(3 downto 0) := (others => '1');
     
 begin
-    pOut <= intPOut;
-    
-    -- Test
-    -- pRdy <= '1' when ((pIn and not(IrqMask)) /= not(IrqMask)) else '0';
     -- TODO
     pRdy <= '0';
     
     -- stb debouncing
-    process 
+    strobe : process 
     begin
          wait until rising_edge(clk);
          
          stbDebounce <= stbDebounce(stbDebounce'left-1 downto 0) & pStb;
     end process;
     
+    -- pio-dataout
+    pio_dataout : process(pOutReg,mode,portMask,pIn)
+    begin
+        case mode is
+            when "00" => pOut <= pOutReg;  -- Mode 0 (output)
+            when "01" => pOut <= pOutReg;  -- Mode 1 (read) -- ToDo pullups
+            when "10" => pOut <= pOutReg;  -- Mode 2 (bidir - ToDo)
+            when "11" => pOut <= (pIn and portMask) or (pOutReg and not portMask); -- Mode 3 (control)
+        end case;
+    end process;
+    
     -- cpu-interface (data-out)
-    process(mode, pIn, portMask, irqVect, intPOut, intAck)
+    cpu_dataout : process(mode, pIn, portMask, irqVect, pOutReg, intAck)
     begin
         if (intAck='1') then
             dOut <= irqVect & '0';
         else
             case mode is
-                when "00" => dOut <= intPOut; -- Mode 0 (output)
-                when "01" => dOut <= pIn; -- Mode 1 (input)
-                when "11" => dOut <= (pIn and portMask) or (intPOut and not(portMask)); -- Mode 3 (control)
-                when others => dOut <= (others => '0');
+                when "00" => dOut <= pOutReg; -- Mode 0 (output)
+                when "01" => dOut <= pIn;     -- Mode 1 (input)
+                when "10" => dOut <= pIn;     -- Mode 2 (bidir - ToDo)
+                when "11" => dOut <= (pIn and portMask) or (pOutReg and not portMask); -- Mode 3 (control)
             end case;
         end if;
     end process;
 
     -- irq handling
-    process
+    irq : process
         variable nIrqMask : std_logic_vector(7 downto 0);
     begin
         wait until rising_edge(clk);
@@ -145,7 +154,7 @@ begin
     end process;
     
     -- cpu-interface (data-in)
-    process
+    cpu_control : process
     begin
         wait until rising_edge(clk);
         
@@ -161,11 +170,7 @@ begin
                 if (cdSel='0') then
                     if (rd_n='1') then
                         -- write
-                        case mode is
-                            when "00" => intPOut <= dIn;  -- Mode 0 (output)
-                            when "11" => intPOut <= dIn and not(portMask); -- Mode 3 (control)
-                            when others => intPOut <= (others => '0');
-                        end case;
+                        pOutReg <= dIn;
                     else
                         -- read
 --                        dOut <= input;
