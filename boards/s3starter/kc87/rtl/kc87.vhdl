@@ -1,3 +1,27 @@
+-- Copyright (c) 2015, $ME
+-- All rights reserved.
+--
+-- Redistribution and use in source and synthezised forms, with or without modification, are permitted 
+-- provided that the following conditions are met:
+--
+-- 1. Redistributions of source code must retain the above copyright notice, this list of conditions 
+--    and the following disclaimer.
+--
+-- 2. Redistributions in synthezised form must reproduce the above copyright notice, this list of conditions
+--    and the following disclaimer in the documentation and/or other materials provided with the distribution.
+--
+-- THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED 
+-- WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A 
+-- PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR 
+-- ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED 
+-- TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) 
+-- HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING 
+-- NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE 
+-- POSSIBILITY OF SUCH DAMAGE.
+--
+--
+-- KC87 Toplevel fuer S3Starter
+--
 library IEEE;
 use IEEE.std_logic_1164.all;
 
@@ -34,7 +58,7 @@ entity kc87 is
         
         HEX         : out std_logic_vector(6 downto 0);
         HEX_AN      : out std_logic_vector(3 downto 0);
-		  
+          
         SD_DAT      : in std_logic;
         SD_DAT3     : out std_logic;
         SD_CMD      : out std_logic;
@@ -61,7 +85,7 @@ architecture struct of kc87 is
     signal cpu_addr     : std_logic_vector(15 downto 0);
     signal cpu_do       : std_logic_vector(7 downto 0);
     signal cpu_di       : std_logic_vector(7 downto 0);
-	 signal cpu_clken    : std_logic;
+     signal cpu_clken    : std_logic;
     signal bootRom_d    : std_logic_vector(7 downto 0);
     signal monitorRom_d : std_logic_vector(7 downto 0);
     signal osRom_d      : std_logic_vector(7 downto 0);
@@ -136,7 +160,7 @@ architecture struct of kc87 is
     
     signal ledbuff      : std_logic_vector(7 downto 0);
     signal leddelay     : integer range 0 to 400000 := 0;
-	 
+     
     signal kmatrixXout  : std_logic_vector(7 downto 0);
     signal kmatrixXin   : std_logic_vector(7 downto 0);
     signal kmatrixYout  : std_logic_vector(7 downto 0);
@@ -168,12 +192,12 @@ architecture struct of kc87 is
     signal int_SD_DAT3 : std_logic;
     signal int_SD_CLK  : std_logic;
     signal int_SD_CMD  : std_logic;
-	 
-	 signal vga_red     : std_logic_vector(3 downto 0);
-	 signal vga_green   : std_logic_vector(3 downto 0);
-	 signal vga_blue    : std_logic_vector(3 downto 0);
-	 
-	 signal testData    : std_logic_vector(7 downto 0);
+     
+     signal vga_red     : std_logic_vector(3 downto 0);
+     signal vga_green   : std_logic_vector(3 downto 0);
+     signal vga_blue    : std_logic_vector(3 downto 0);
+     
+     signal testData    : std_logic_vector(7 downto 0);
 begin
     GPIO_1(1) <= int_SD_DAT3;
     GPIO_1(3) <= int_SD_CLK;
@@ -184,10 +208,10 @@ begin
     SD_CLK  <= int_SD_CLK;
     SD_CMD  <= int_SD_CMD; 
     
-	 VGA_R <= vga_red(3);
-	 VGA_G <= vga_green(3);
-	 VGA_B <= vga_blue(3);
-	 
+     VGA_R <= vga_red(3);
+     VGA_G <= vga_green(3);
+     VGA_B <= vga_blue(3);
+     
     wait_n <= '1';
     busrq_n <= '1';
     nmi_n <= '1';
@@ -197,20 +221,20 @@ begin
         testAddr3 when KEY(1)='1' else
         intAddr;
 
-	 led : entity work.ledDisplay
-	 port map (
-	     clk        => clk,
-		  display    => ledDisplay,
-		  hex_digits => HEX_AN,
-		  hex        => HEX
-	 );
-	 
-	 LEDR <= (not PS2_CLK) & sysctl_d(5 downto 0) & (not int_SD_DAT3) when SW(7)='0' else
-				testData when SW(6)='0' else
-				kmatrixXout when SW(5)='0' else
-				kmatrixYout when SW(4)='0' else
-				ledbuff;
-	 
+     led : entity work.ledDisplay
+     port map (
+         clk        => clk,
+          display    => ledDisplay,
+          hex_digits => HEX_AN,
+          hex        => HEX
+     );
+     
+     LEDR <= (not PS2_CLK) & sysctl_d(5 downto 0) & (not int_SD_DAT3) when SW(7)='0' else
+                testData when SW(6)='0' else
+                kmatrixXout when SW(5)='0' else
+                kmatrixYout when SW(4)='0' else
+                ledbuff;
+     
     process
     begin
         wait until rising_edge(clk);
@@ -321,8 +345,8 @@ begin
 --        end if;
 --    end process;
     
-	 cpu_clken <= (kcSysClk or sysctl_d(1) or SW(0));
-	 
+     cpu_clken <= (kcSysClk or sysctl_d(1) or SW(0));
+     
     cpu : entity work.T80se
         generic map(Mode => 1, T2Write => 1, IOWait => 0)
         port map(
