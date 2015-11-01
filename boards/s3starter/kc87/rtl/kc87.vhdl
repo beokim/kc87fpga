@@ -56,7 +56,7 @@ entity kc87 is
         SW          : in  std_logic_vector(7 downto 0);
         LEDR        : out std_logic_vector(7 downto 0);
         
-        HEX         : out std_logic_vector(6 downto 0);
+        HEX         : out std_logic_vector(7 downto 0);
         HEX_AN      : out std_logic_vector(3 downto 0);
           
         SD_DAT      : in std_logic;
@@ -208,9 +208,9 @@ begin
     SD_CLK  <= int_SD_CLK;
     SD_CMD  <= int_SD_CMD; 
     
-     VGA_R <= vga_red(3);
-     VGA_G <= vga_green(3);
-     VGA_B <= vga_blue(3);
+    VGA_R <= vga_red(3);
+    VGA_G <= vga_green(3);
+    VGA_B <= vga_blue(3);
      
     wait_n <= '1';
     busrq_n <= '1';
@@ -221,15 +221,15 @@ begin
         testAddr3 when KEY(1)='1' else
         intAddr;
 
-     led : entity work.ledDisplay
-     port map (
-         clk        => clk,
-          display    => ledDisplay,
-          hex_digits => HEX_AN,
-          hex        => HEX
-     );
+    led : entity work.ledDisplay
+    port map (
+        clk        => clk,
+        display    => ledDisplay,
+        hex_digits => HEX_AN,
+        hex        => HEX
+    );
      
-     LEDR <= (not PS2_CLK) & sysctl_d(5 downto 0) & (not int_SD_DAT3) when SW(7)='0' else
+    LEDR <= (not PS2_CLK) & sysctl_d(5 downto 0) & (not int_SD_DAT3) when SW(7)='0' else
                 testData when SW(6)='0' else
                 kmatrixXout when SW(5)='0' else
                 kmatrixYout when SW(4)='0' else
@@ -273,8 +273,7 @@ begin
             leddelay <= leddelay + 1;
         end if;
     end process;
-    
-    
+
     process (reset_n, clk, KEY)
     begin
         if reset_n = '0' or KEY(0)='1' then
@@ -377,14 +376,14 @@ begin
     intController : entity work.intController
     port map (
         clk         => clk,
-        res         => resetInt,
-        int         => int_n,
+        res_n       => resetInt,
+        int_n       => int_n,
         intPeriph   => intPeriph,
         intAck      => intAckPeriph,
         cpuDIn      => cpu_di,
-        m1          => m1_n,
-        iorq        => iorq_n,
-        rd          => rd_n,
+        m1_n        => m1_n,
+        iorq_n      => iorq_n,
+        rd_n        => rd_n,
         RETI_n      => RETI_n
     );
     
@@ -401,9 +400,9 @@ begin
             dOut    => ctc_d,
             
             cs      => cpu_addr(1 downto 0),
-            m1      => m1_n,
-            iorq    => iorq_n,
-            rd      => rd_n,
+            m1_n    => m1_n,
+            iorq_n  => iorq_n,
+            rd_n    => rd_n,
             
             int     => intPeriph(3 downto 0),
             intAck  => intAckPeriph(3 downto 0),
@@ -425,10 +424,10 @@ begin
             dOut  => pio1_d,
             baSel => cpu_addr(0),
             cdSel => cpu_addr(1),
-            ce    => pio1_cs_n,
-            m1    => m1_n,
-            iorq  => iorq_n,
-            rd    => rd_n,
+            cs_n  => pio1_cs_n,
+            m1_n  => m1_n,
+            iorq_n => iorq_n,
+            rd_n  => rd_n,
             intAck => intAckPeriph(5 downto 4),
             int   => intPeriph(5 downto 4),
             aIn   => pio1_aIn,
@@ -453,10 +452,10 @@ begin
             dOut  => pio2_d,
             baSel => cpu_addr(0),
             cdSel => cpu_addr(1),
-            ce    => pio2_cs_n,
-            m1    => m1_n,
-            iorq  => iorq_n,
-            rd    => rd_n,
+            cs_n  => pio2_cs_n,
+            m1_n  => m1_n,
+            iorq_n => iorq_n,
+            rd_n  => rd_n,
             intAck => intAckPeriph(7 downto 6),
             int   => intPeriph(7 downto 6),
             aIn   => kmatrixXout,

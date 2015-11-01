@@ -89,6 +89,7 @@ begin
             when "01" => pOut <= pOutReg;  -- Mode 1 (read) -- ToDo pullups
             when "10" => pOut <= pOutReg;  -- Mode 2 (bidir - ToDo)
             when "11" => pOut <= (pIn and portMask) or (pOutReg and not portMask); -- Mode 3 (control)
+            when others => null;
         end case;
     end process;
     
@@ -103,6 +104,7 @@ begin
                 when "01" => dOut <= pIn;     -- Mode 1 (input)
                 when "10" => dOut <= pIn;     -- Mode 2 (bidir - ToDo)
                 when "11" => dOut <= (pIn and portMask) or (pOutReg and not portMask); -- Mode 3 (control)
+                when others => null;
             end case;
         end if;
     end process;

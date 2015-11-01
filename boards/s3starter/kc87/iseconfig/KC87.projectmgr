@@ -7,6 +7,12 @@
    <ItemView engineview="SynthesisOnly" guiview="Source" compilemode="AutoCompile" >
       <ClosedNodes>
          <ClosedNodesVersion>2</ClosedNodesVersion>
+         <ClosedNode>/kc87 - struct E:|source|altera|kc87fpga|boards|s3starter|kc87|rtl|kc87.vhdl/cpu - T80se - rtl</ClosedNode>
+         <ClosedNode>/kc87 - struct E:|source|altera|kc87fpga|boards|s3starter|kc87|rtl|kc87.vhdl/ctc - ctc - rtl</ClosedNode>
+         <ClosedNode>/kc87 - struct E:|source|altera|kc87fpga|boards|s3starter|kc87|rtl|kc87.vhdl/inst_clock - sysclock - Behavioral</ClosedNode>
+         <ClosedNode>/kc87 - struct E:|source|altera|kc87fpga|boards|s3starter|kc87|rtl|kc87.vhdl/led - ledDisplay - rtl</ClosedNode>
+         <ClosedNode>/kc87 - struct E:|source|altera|kc87fpga|boards|s3starter|kc87|rtl|kc87.vhdl/pio1 - pio - rtl</ClosedNode>
+         <ClosedNode>/kc87 - struct E:|source|altera|kc87fpga|boards|s3starter|kc87|rtl|kc87.vhdl/pio2 - pio - rtl</ClosedNode>
          <ClosedNode>/kc87 - struct E:|source|altera|kc87|boards|s3|KC87|rtl|kc87.vhdl/cpu - T80se - rtl</ClosedNode>
          <ClosedNode>/kc87 - struct E:|source|altera|kc87|boards|s3|KC87|rtl|kc87.vhdl/ctc - ctc - rtl</ClosedNode>
          <ClosedNode>/kc87 - struct E:|source|altera|kc87|boards|s3|KC87|rtl|kc87.vhdl/pio1 - pio - rtl</ClosedNode>
@@ -14,13 +20,13 @@
          <ClosedNode>/kc87 - struct E:|source|altera|kc87|boards|s3|KC87|rtl|kc87.vhdl/video - video - rtl</ClosedNode>
       </ClosedNodes>
       <SelectedItems>
-         <SelectedItem>kc87 - struct (E:/source/altera/kc87/boards/s3/KC87/rtl/kc87.vhdl)</SelectedItem>
+         <SelectedItem>kc87 - struct (E:/source/altera/kc87fpga/boards/s3starter/kc87/rtl/kc87.vhdl)</SelectedItem>
       </SelectedItems>
       <ScrollbarPosition orientation="vertical" >0</ScrollbarPosition>
       <ScrollbarPosition orientation="horizontal" >0</ScrollbarPosition>
       <ViewHeaderState orientation="horizontal" >000000ff00000000000000010000000100000000000000000000000000000000020200000001000000010000006400000184000000020000000000000000000000000200000064ffffffff000000810000000300000002000001840000000100000003000000000000000100000003</ViewHeaderState>
       <UserChangedColumnWidths orientation="horizontal" >true</UserChangedColumnWidths>
-      <CurrentItem>kc87 - struct (E:/source/altera/kc87/boards/s3/KC87/rtl/kc87.vhdl)</CurrentItem>
+      <CurrentItem>kc87 - struct (E:/source/altera/kc87fpga/boards/s3starter/kc87/rtl/kc87.vhdl)</CurrentItem>
    </ItemView>
    <ItemView engineview="SynthesisOnly" sourcetype="" guiview="Process" >
       <ClosedNodes>
@@ -45,7 +51,7 @@
       </SelectedItems>
       <ScrollbarPosition orientation="vertical" >0</ScrollbarPosition>
       <ScrollbarPosition orientation="horizontal" >0</ScrollbarPosition>
-      <ViewHeaderState orientation="horizontal" >000000ff000000000000000100000000000000000100000000000000000000000000000000000004e3000000040101000100000000000000000000000064ffffffff0000008100000000000000040000009000000001000000000000004e00000001000000000000006600000001000000000000039f0000000100000000</ViewHeaderState>
+      <ViewHeaderState orientation="horizontal" >000000ff000000000000000100000000000000000100000000000000000000000000000000000004e3000000040101000100000000000000000000000064ffffffff000000810000000000000004000000b800000001000000000000004e0000000100000000000000660000000100000000000003770000000100000000</ViewHeaderState>
       <UserChangedColumnWidths orientation="horizontal" >false</UserChangedColumnWidths>
       <CurrentItem>kc87_tb.vhd</CurrentItem>
    </ItemView>
@@ -115,13 +121,13 @@
          <ClosedNode>/kc87_tb - behavior E:|source|altera|kc87|boards|s3|KC87|sim|kc87_tb.vhd/uut - kc87 - struct</ClosedNode>
       </ClosedNodes>
       <SelectedItems>
-         <SelectedItem>kc87_tb - behavior (E:/source/altera/kc87/boards/s3/KC87/sim/kc87_tb.vhd)</SelectedItem>
+         <SelectedItem>kc87_tb - behavior (E:/source/altera/kc87fpga/boards/s3starter/kc87/sim/kc87_tb.vhd)</SelectedItem>
       </SelectedItems>
       <ScrollbarPosition orientation="vertical" >0</ScrollbarPosition>
       <ScrollbarPosition orientation="horizontal" >0</ScrollbarPosition>
-      <ViewHeaderState orientation="horizontal" >000000ff000000000000000100000001000000000000000000000000000000000202000000010000000100000064000000f3000000020000000000000000000000000200000064ffffffff000000810000000300000002000000f30000000100000003000000000000000100000003</ViewHeaderState>
-      <UserChangedColumnWidths orientation="horizontal" >false</UserChangedColumnWidths>
-      <CurrentItem>kc87_tb - behavior (E:/source/altera/kc87/boards/s3/KC87/sim/kc87_tb.vhd)</CurrentItem>
+      <ViewHeaderState orientation="horizontal" >000000ff00000000000000010000000100000000000000000000000000000000020200000001000000010000006400000198000000020000000000000000000000000200000064ffffffff000000810000000300000002000001980000000100000003000000000000000100000003</ViewHeaderState>
+      <UserChangedColumnWidths orientation="horizontal" >true</UserChangedColumnWidths>
+      <CurrentItem>kc87_tb - behavior (E:/source/altera/kc87fpga/boards/s3starter/kc87/sim/kc87_tb.vhd)</CurrentItem>
    </ItemView>
    <ItemView engineview="BehavioralSim" sourcetype="" guiview="Process" >
       <ClosedNodes>
@@ -142,12 +148,12 @@
          <ClosedNodesVersion>1</ClosedNodesVersion>
       </ClosedNodes>
       <SelectedItems>
-         <SelectedItem/>
+         <SelectedItem>ISim Simulator</SelectedItem>
       </SelectedItems>
       <ScrollbarPosition orientation="vertical" >0</ScrollbarPosition>
       <ScrollbarPosition orientation="horizontal" >0</ScrollbarPosition>
       <ViewHeaderState orientation="horizontal" >000000ff00000000000000010000000100000000000000000000000000000000000000000000000151000000010000000100000000000000000000000064ffffffff000000810000000000000001000001510000000100000000</ViewHeaderState>
       <UserChangedColumnWidths orientation="horizontal" >false</UserChangedColumnWidths>
-      <CurrentItem/>
+      <CurrentItem>ISim Simulator</CurrentItem>
    </ItemView>
 </Project>

@@ -31,9 +31,9 @@ entity ledDisplay is
     );
     Port ( 
         clk          : in  STD_LOGIC;
-          display    : in   STD_LOGIC_VECTOR (15 downto 0);
-        hex_digits : out  STD_LOGIC_VECTOR (3 downto 0);
-        hex          : out  STD_LOGIC_VECTOR (6 downto 0));
+        display      : in   STD_LOGIC_VECTOR (15 downto 0);
+        hex_digits   : out  STD_LOGIC_VECTOR (3 downto 0);
+        hex          : out  STD_LOGIC_VECTOR (7 downto 0));
 end ledDisplay;
 
 architecture rtl of ledDisplay is
@@ -71,8 +71,9 @@ begin
     dec : entity work.seg7dec
     port map (
         number => digit,
-        digits => hex
+        digits => hex(6 downto 0)
     );
 
+    hex(7) <= '1';
 end;
 
