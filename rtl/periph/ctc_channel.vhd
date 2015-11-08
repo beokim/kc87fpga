@@ -35,7 +35,7 @@ entity ctc_channel is
         dIn   : in std_logic_vector(7 downto 0);
         dOut  : out std_logic_vector(7 downto 0);
         
-        rd_n  : in std_logic;
+        rd_n    : in std_logic;
         
         int   : out std_logic;
         setTC : out std_logic;
@@ -76,7 +76,7 @@ begin
     preDivVect <= std_logic_vector(to_unsigned(preDivider, preDivVect'length));
     
     -- ctc counter
-    process
+    counter : process
         variable cntrEvent : boolean;
     begin
         wait until rising_edge(clk);
@@ -111,7 +111,7 @@ begin
                 startUp <= false;
                 dCounter <= timeConstant;
             elsif (cntrEvent) then
-                if (dCounter = 0) then
+                if (dCounter = 1) then -- next count 0 => reload
                     dCounter <= timeConstant;
                     triggerIrq <= true;
                     zc_to <= '1';
@@ -131,7 +131,7 @@ begin
     end process;
     
     -- cpu-interface
-    process
+    cpu : process
         variable tcData : integer range 0 to 255;
     begin
         wait until rising_edge(clk);
